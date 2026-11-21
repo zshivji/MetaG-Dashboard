@@ -50,7 +50,10 @@ def parse_script(script: Path, project: Path) -> tuple[list[str], list[str]]:
         for index, token in enumerate(tokens[1:], start=1):
             value = clean_token(token)
             previous = tokens[index - 1].lower() if index else ""
-            if previous in OUTPUT_FLAGS:
+            flag, separator, attached = value.partition("=")
+            if flag.lower() in OUTPUT_FLAGS and separator and attached:
+                outputs.add(clean_token(attached))
+            elif previous in OUTPUT_FLAGS:
                 outputs.add(value)
             elif is_file_token(value) and not value.startswith("-"):
                 inputs.add(value)
@@ -127,12 +130,14 @@ def main() -> None:
         script_relative = copy_file(script)
         result_files = output_files(script, output_tokens, project)
         relative_outputs = sorted(copy_file(path) for path in result_files)
+        declared_outputs = sorted(set(output_tokens) | set(relative_outputs))
         steps.append({
             "number": int(SCRIPT_RE.match(script.name).group(1)),
             "name": display_name(script),
             "script": script_relative,
             "inputs": inputs,
-            "outputs": relative_outputs,
+            "outputs": declared_outputs,
+            "copied_outputs": relative_outputs,
         })
 
     manifest = {
@@ -145,6 +150,8 @@ def main() -> None:
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"Built {output} from {project}")
     print(f"Included {len(steps)} steps and {len(copied)} files")
+    for step in steps:
+        print(f"  {step['number']:02d} {step['name']}: {len(step['inputs'])} inputs, {len(step['outputs'])} declared outputs, {len(step['copied_outputs'])} copied outputs")
     if not config:
         print("Warning: config.tsv was not found")
 

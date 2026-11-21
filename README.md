@@ -38,6 +38,8 @@ git push
 
 The builder copies `config.tsv`, numbered shell scripts, and supported output files referenced by those scripts into `dashboard-data/`, then writes `dashboard-data/manifest.json`. Raw FASTQ/BAM files and other intermediate data are not copied. When the hosted dashboard finds that manifest, it loads the bundle automatically; the local directory picker remains available as a fallback.
 
+The builder reports the number of scripts, inputs, declared outputs, and copied outputs. If a declared output is a shell variable such as `$OUT`, the name is recorded in the manifest but the file cannot be copied automatically; replace it with a concrete path or add the output path explicitly to the script. Supported output arguments include `-o`, `--out`, `--output`, `--output-dir`, `--outdir`, `--outfile`, `--report`, `--html`, shell redirections, and `--output=path` syntax.
+
 ## Enable GitHub Pages
 
 The repository includes `.github/workflows/pages.yml`. In the repository settings, open **Pages**, set the source to **GitHub Actions**, and push to `main`. Every subsequent push redeploys the dashboard. After generating a new bundle from the HPC, review the files and run:

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A directory-driven dashboard for shotgun metagenomics analyses." />
+    <title>MetaG Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand"><div class="brand-mark">M<span>G</span></div><div><p class="eyebrow">Shotgun metagenomics</p><h1>MetaG Dashboard</h1></div></div>
+      <button id="choose-directory" class="button button-primary">Choose HPC directory <span aria-hidden="true">↗</span></button>
+      <input id="directory-input" type="file" webkitdirectory directory multiple hidden />
+    </header>
+    <main>
+      <section id="welcome" class="welcome panel">
+        <div class="welcome-copy"><p class="eyebrow">A reproducible view of your analysis</p><h2>Turn a pipeline directory into a clear research story.</h2><p>Select the directory containing your numbered shell scripts, <code>config.tsv</code>, and analysis outputs. Everything is read locally in your browser; no files are uploaded.</p><button id="choose-directory-secondary" class="button button-dark">Open a project directory</button></div>
+        <div class="directory-diagram" aria-label="Expected directory structure"><div class="folder-card"><span class="folder-icon">⌁</span><strong>project/</strong><span>config.tsv</span><span>1-quality-control.sh</span><span>2-taxonomic-profiling.sh</span><span>results/</span></div><div class="diagram-note"><span>01</span> one tab per numbered step</div><div class="diagram-note"><span>+</span> outputs rendered in context</div></div>
+      </section>
+      <section id="dashboard" hidden><div class="project-bar"><div><p class="eyebrow">Loaded project</p><h2 id="project-name">—</h2></div><div class="project-stats"><span id="step-count">0 steps</span><span id="file-count">0 files</span></div></div><nav id="step-tabs" class="step-tabs" aria-label="Analysis steps"></nav><div id="step-content" class="step-content"></div></section>
+    </main>
+    <footer><span>MetaG Dashboard</span><span>Local-first · GitHub Pages ready</span></footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>
