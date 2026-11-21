@@ -8,21 +8,34 @@
       "name": "preprocess reads",
       "script": "1_preprocess-reads.sh",
       "inputs": [],
-      "outputs": []
+      "outputs": [
+        "$READS_R1",
+        "$READS_R2",
+        "$outdir/fastqc",
+        "1"
+      ],
+      "copied_outputs": []
     },
     {
       "number": 2,
       "name": "decontaminate",
       "script": "2_decontaminate.sh",
       "inputs": [],
-      "outputs": []
+      "outputs": [
+        "1"
+      ],
+      "copied_outputs": []
     },
     {
       "number": 4,
       "name": "assemble reads",
       "script": "4_assemble-reads.sh",
       "inputs": [],
-      "outputs": []
+      "outputs": [
+        "1",
+        "assembly/spades/${SAMPLE}"
+      ],
+      "copied_outputs": []
     },
     {
       "number": 5,
@@ -34,7 +47,13 @@
         "assembly/spades-noerror-correction/${SAMPLE}/scaffolds.fasta",
         "assembly/spades/${SAMPLE}/scaffolds.fasta"
       ],
-      "outputs": []
+      "outputs": [
+        "/dev/null",
+        "1",
+        ">",
+        "quast_results/${SAMPLE}"
+      ],
+      "copied_outputs": []
     }
   ],
   "files": [
