@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "name": "LAR + MSH + UF MetaG",
+  "config": "config.tsv",
+  "steps": [
+    {
+      "number": 1,
+      "name": "preprocess reads",
+      "script": "1_preprocess-reads.sh",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "number": 2,
+      "name": "decontaminate",
+      "script": "2_decontaminate.sh",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "number": 4,
+      "name": "assemble reads",
+      "script": "4_assemble-reads.sh",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "number": 5,
+      "name": "assemblyQC",
+      "script": "5_assemblyQC.sh",
+      "inputs": [
+        "alignment_rates.tsv",
+        "assembly/megahit/${SAMPLE}/final.contigs.fa",
+        "assembly/spades-noerror-correction/${SAMPLE}/scaffolds.fasta",
+        "assembly/spades/${SAMPLE}/scaffolds.fasta"
+      ],
+      "outputs": []
+    }
+  ],
+  "files": [
+    "1_preprocess-reads.sh",
+    "2_decontaminate.sh",
+    "4_assemble-reads.sh",
+    "5_assemblyQC.sh",
+    "config.tsv"
+  ]
+}
