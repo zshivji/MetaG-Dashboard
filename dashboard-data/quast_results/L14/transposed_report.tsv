@@ -1,0 +1,4 @@
+Assembly	# contigs (>= 0 bp)	# contigs (>= 1000 bp)	# contigs (>= 5000 bp)	# contigs (>= 10000 bp)	# contigs (>= 25000 bp)	# contigs (>= 50000 bp)	Total length (>= 0 bp)	Total length (>= 1000 bp)	Total length (>= 5000 bp)	Total length (>= 10000 bp)	Total length (>= 25000 bp)	Total length (>= 50000 bp)	# contigs	Largest contig	Total length	GC (%)	N50	N90	auN	L50	L90	# N's per 100 kbp
+MEGAHIT	152020	12707	501	83	3	0	89188623	23915896	3980265	1185325	84758	0	57246	31779	53479406	44.27	907	550	1827.0	15674	47030	0.00
+metaSPAdes_EC	278009	12084	172	19	0	0	128549538	19757598	1219119	246277	0	0	63951	22322	53906613	44.74	812	539	1248.0	20130	53548	0.00
+metaSPAdes	286574	12047	132	16	0	0	131611281	19186939	943559	206840	0	0	65674	23024	54462024	44.76	800	537	1184.0	21123	55150	0.00

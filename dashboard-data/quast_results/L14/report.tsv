@@ -1,0 +1,23 @@
+Assembly	MEGAHIT	metaSPAdes_EC	metaSPAdes
+# contigs (>= 0 bp)	152020	278009	286574
+# contigs (>= 1000 bp)	12707	12084	12047
+# contigs (>= 5000 bp)	501	172	132
+# contigs (>= 10000 bp)	83	19	16
+# contigs (>= 25000 bp)	3	0	0
+# contigs (>= 50000 bp)	0	0	0
+Total length (>= 0 bp)	89188623	128549538	131611281
+Total length (>= 1000 bp)	23915896	19757598	19186939
+Total length (>= 5000 bp)	3980265	1219119	943559
+Total length (>= 10000 bp)	1185325	246277	206840
+Total length (>= 25000 bp)	84758	0	0
+Total length (>= 50000 bp)	0	0	0
+# contigs	57246	63951	65674
+Largest contig	31779	22322	23024
+Total length	53479406	53906613	54462024
+GC (%)	44.27	44.74	44.76
+N50	907	812	800
+N90	550	539	537
+auN	1827.0	1248.0	1184.0
+L50	15674	20130	21123
+L90	47030	53548	55150
+# N's per 100 kbp	0.00	0.00	0.00
